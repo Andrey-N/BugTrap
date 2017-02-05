@@ -55,6 +55,7 @@
     <RootNamespace>BugTrap</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>BugTrap</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='.NET Release|Win32'" Label="Configuration">
@@ -72,12 +73,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Unicode Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Unicode Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -87,7 +88,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='.NET Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -466,7 +467,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\zlib\include</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
-      <Culture>0x0409</Culture>
+      <Culture>0x0419</Culture>
       <ResourceOutputFileName>$(IntDir)$(TargetName).res</ResourceOutputFileName>
     </ResourceCompile>
     <Link>
@@ -551,7 +552,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\zlib\include</AdditionalIncludeDirectories>
     </ClCompile>
     <ResourceCompile>
-      <Culture>0x0409</Culture>
+      <Culture>0x0419</Culture>
       <ResourceOutputFileName>$(IntDir)$(TargetName).res</ResourceOutputFileName>
     </ResourceCompile>
     <Link>
@@ -953,4 +954,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="BugTrap.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

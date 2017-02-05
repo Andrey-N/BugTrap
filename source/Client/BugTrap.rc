@@ -1,7 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
-#include "VersionInfoString.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -18,7 +17,7 @@
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
-#pragma code_page(1252)
+#pragma code_page(1251)
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -29,14 +28,18 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 // remains consistent on all systems.
 IDI_BUG                 ICON                    "res\\Bug.ico"
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
 //
 
 IDB_CHECKMARK           BITMAP                  "res\\Checkmark.bmp"
+
 IDB_SORTARROWS          BITMAP                  "res\\SortArrows.bmp"
+
 IDB_IMAGETOOLBAR        BITMAP                  "res\\ImageToolbar.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -44,6 +47,7 @@ IDB_IMAGETOOLBAR        BITMAP                  "res\\ImageToolbar.bmp"
 //
 
 IDR_UPLOAD_ANIMATION    AVI                     "res\\Upload.avi"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -77,6 +81,438 @@ END
 #endif    // APSTUDIO_INVOKED
 
 #endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT_BUGTRAP_DLG DIALOGEX 0, 0, 273, 76
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "О программе BugTrap"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    ICON            IDI_BUG,IDC_STATIC,7,7,20,20,WS_GROUP
+    LTEXT           "BugTrap - программа отправки отчетов об ошибках",IDC_VERSION_STRING,34,7,190,11
+    LTEXT           "Copyright © 2005-2009 IntelleSoft",IDC_STATIC,7,32,113,8
+    LTEXT           "http://www.intellesoft.net",IDC_URL,7,42,72,10,WS_TABSTOP
+    LTEXT           " GUI design based on Jim Crafton's BlackBox library",IDC_PORTIONS_COPYRIGHT,7,59,259,10,SS_NOPREFIX | SS_SUNKEN
+    DEFPUSHBUTTON   "Закрыть",IDCANCEL,226,7,40,14,WS_GROUP
+    LTEXT           "Версия",IDC_STATIC_VERSION,34,18,152,8
+END
+
+IDD_DESCRIBE_ERROR_DLG DIALOGEX 0, 0, 316, 196
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MAXIMIZEBOX | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Опишите ошибку"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Пожалуйста, опишите суть проблемы и, если возможно, шаги для воспроизведения ошибки:",-1,7,7,302,22
+    EDITTEXT        IDC_DETAILS,7,29,302,137,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    DEFPUSHBUTTON   "Отправить",IDOK,203,175,50,14,WS_GROUP
+    PUSHBUTTON      "Закрыть",IDCANCEL,259,175,50,14
+END
+
+IDD_MACHINE_INFO_DLG DIALOGEX 0, 0, 340, 260
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Информация о компьютере"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Операционная система",IDC_STATIC,7,7,269,43,WS_GROUP
+    EDITTEXT        IDC_OS_TEXT,12,16,259,30,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    GROUPBOX        "Центральный процессор",IDC_STATIC,7,50,269,52,WS_GROUP
+    EDITTEXT        IDC_CPU_TEXT,12,58,259,40,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    GROUPBOX        "Память",IDC_STATIC,7,103,269,62,WS_GROUP
+    EDITTEXT        IDC_MEM_TEXT,12,112,259,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    GROUPBOX        "Переменные окружения",IDC_STATIC,7,165,269,88,WS_GROUP
+    EDITTEXT        IDC_ENVIRONMENT,12,174,259,75,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "Закрыть",IDCANCEL,283,10,50,14,WS_GROUP
+END
+
+IDD_MACHINE_STATE_DLG DIALOGEX 0, 0, 322, 222
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Состояние компьютера на момент ошибки"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    GROUPBOX        "Запущенные приложения:",IDC_PROCESS_LIST_FRAME,7,7,250,97,WS_GROUP,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_PROCESS_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,12,17,239,80
+    GROUPBOX        "Модули загруженные выбранным процессом:",IDC_PROCESS_MODULES_LIST_FRAME,7,107,250,108,WS_GROUP,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_PROCESS_MODULES_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,12,117,239,92
+    DEFPUSHBUTTON   "Закрыть",IDCANCEL,264,11,51,14,WS_GROUP
+END
+
+IDD_MAIN_DLG DIALOGEX 0, 0, 370, 298
+STYLE DS_SETFONT | DS_SETFOREGROUND | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "BugTrap"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "",IDC_INTRO_BKGND,0,0,370,59,SS_NOPREFIX
+    CONTROL         IDS_BUGTRAP_NAME,IDC_DIALOG_ICON,"Static",SS_BITMAP | WS_GROUP,7,7,15,13
+    LTEXT           "Ошибка была обнаружена программой BugTrap",IDC_INTRO1,35,7,325,8
+    LTEXT           "Для того, чтобы помочь процессу разработки, эта программа попытается собрать информацию о случившейся ошибке и состояние Вашего компьютера в момент сбоя программы. Затем эти данные могут быть отправлены в службу поддержки продукта или сохранены в файл.",IDC_INTRO2,35,19,335,28,SS_NOPREFIX
+    LTEXT           "Адресс службы поддержки:",IDC_URL_PREFIX,35,47,98,8
+    LTEXT           "",IDC_URL,133,47,227,10,WS_TABSTOP
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ | WS_GROUP,0,59,370,1
+    GROUPBOX        "Причина сбоя",IDC_STATIC,7,62,295,64,WS_GROUP
+    EDITTEXT        IDC_EXCEPTION,14,71,280,49,ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    GROUPBOX        "Регистры",IDC_STATIC,7,128,295,58,WS_GROUP
+    EDITTEXT        IDC_REGISTER,14,138,280,43,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP
+    GROUPBOX        "Состояние стека",IDC_STATIC,7,188,295,103,WS_GROUP
+    CONTROL         "",IDC_STACKTRACE,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,14,199,280,87
+    PUSHBUTTON      "Закрыть",IDCANCEL,308,66,52,14,WS_GROUP
+    DEFPUSHBUTTON   "Отправить...",IDC_SUBMIT_BUG,308,96,52,14
+    PUSHBUTTON      "По почте...",IDC_MAILTO,308,116,52,14
+    PUSHBUTTON      "Просмотр..",IDC_PREVIEW_REPORT,308,146,52,14
+    PUSHBUTTON      "Сохранить...",IDC_SAVE_REPORT,308,166,52,14
+    PUSHBUTTON      "Информация...",IDC_MACHINE_INFO,308,196,52,14
+    PUSHBUTTON      "Состояние...",IDC_MACHINE_STATE,308,216,52,14
+END
+
+IDD_PREVIEW_DLG DIALOGEX 0, 0, 342, 213
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MAXIMIZEBOX | WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Просмотр файлов отчета"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_SPLITTER,"Static",SS_BLACKRECT | WS_GROUP,3,3,336,182
+    CONTROL         "",IDC_FILESLIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SHAREIMAGELISTS | LVS_ALIGNLEFT | WS_BORDER | WS_GROUP | WS_TABSTOP,3,3,336,55
+    CONTROL         "",IDC_FILEVIEW,"Static",SS_GRAYRECT | WS_BORDER | WS_GROUP | WS_TABSTOP,3,61,336,125
+    CONTROL         "",IDC_FILEFORMAT_FRAME,"Static",SS_ETCHEDFRAME | NOT WS_VISIBLE | WS_GROUP,3,190,122,18,WS_EX_TRANSPARENT
+    CONTROL         "&Текст",IDC_TEXTVIEW,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE | WS_GROUP | WS_TABSTOP,13,194,34,10
+    CONTROL         "&Hex",IDC_HEXVIEW,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,68,194,28,10
+    CONTROL         "",IDC_IMAGE_COMMANDS,"ToolbarWindow32",NOT WS_VISIBLE | 0x4c,3,191,120,16
+    DEFPUSHBUTTON   "Закрыть",IDCANCEL,284,192,50,14,WS_GROUP
+END
+
+IDD_SEND_MAIL_DLG DIALOGEX 0, 0, 316, 196
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_MAXIMIZEBOX | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Отправка почты"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "&Получатель:",IDC_STATIC,7,8,47,8
+    EDITTEXT        IDC_RECIPIENT,63,7,246,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    LTEXT           "&Вложения:",IDC_STATIC,7,24,48,8
+    EDITTEXT        IDC_ATTACHMENT,63,23,246,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    LTEXT           "&Тема:",IDC_STATIC,7,41,48,8
+    EDITTEXT        IDC_SUBJECT,63,39,246,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_BODY,7,57,302,109,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    DEFPUSHBUTTON   "Отправить",IDOK,203,175,50,14,WS_GROUP
+    PUSHBUTTON      "Закрыть",IDCANCEL,259,175,50,14
+END
+
+IDD_SIMPLE_DLG DIALOGEX 0, 0, 370, 94
+STYLE DS_SETFONT | DS_SETFOREGROUND | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "BugTrap"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    LTEXT           "",IDC_INTRO_BKGND,0,0,370,53,SS_NOPREFIX
+    CONTROL         IDS_BUGTRAP_NAME,IDC_DIALOG_ICON,"Static",SS_BITMAP | WS_GROUP,7,7,15,13
+    LTEXT           "Ошибка была обнаружена программой BugTrap",IDC_INTRO1,35,7,335,8
+    LTEXT           "Для того, чтобы помочь процессу разработки, эта программа попытается собрать информацию о случившейся ошибке и состояние Вашего компьютера в момент сбоя программы. Затем эти данные могут быть отправлены в службу поддержки продукта или сохранены в файл.",IDC_INTRO2,35,19,335,26,SS_NOPREFIX
+    CONTROL         "",-1,"Static",SS_ETCHEDHORZ | WS_GROUP,0,52,370,1
+    LTEXT           "Адресс службы поддержки:",IDC_URL_PREFIX,7,59,95,8
+    LTEXT           "",IDC_URL,102,59,268,10,WS_TABSTOP
+    DEFPUSHBUTTON   "Отправить отчет",IDC_SUBMIT_BUG,10,73,80,14,WS_GROUP
+    LTEXT           "mail to...",IDC_MAILTO,102,75,30,12,NOT WS_GROUP | WS_TABSTOP
+    PUSHBUTTON      "Детали...",IDC_MORE,232,73,52,14
+    PUSHBUTTON      "Закрыть",IDCANCEL,305,73,52,14
+END
+
+IDD_TRANSFERPROGRESS_PANE DIALOGEX 0, 0, 184, 72
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_UPLOAD_ANIMATION,"SysAnimate32",ACS_TRANSPARENT | WS_GROUP,7,7,62,17
+    CONTROL         "",IDC_CONNECTINGTOSERVER_CMARK,"Static",SS_BITMAP | NOT WS_VISIBLE | WS_GROUP,80,9,15,13
+    LTEXT           "Подключение к серверу",IDC_CONNECTINGTOSERVER_LBL,90,7,81,8
+    CONTROL         "",IDC_SENDINGREPORT_CMARK,"Static",SS_BITMAP | NOT WS_VISIBLE | WS_GROUP,80,22,15,13
+    LTEXT           "Отправка отчета",IDC_SENDINGREPORT_LBL,90,20,57,8
+    CONTROL         "",IDC_CHECKINGERRORSTATUS_CMARK,"Static",SS_BITMAP | NOT WS_VISIBLE | WS_GROUP,80,35,15,13
+    LTEXT           "Проверка стауса",IDC_CHECKINGERRORSTATUS_LBL,90,33,70,8
+    DEFPUSHBUTTON   "Закрыть",IDCANCEL,127,51,50,14
+END
+
+IDD_TRANSFERSTATUS_PANE DIALOGEX 0, 0, 184, 72
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    ICON            "",IDC_STATUSICON,10,13,20,20,NOT WS_VISIBLE | WS_GROUP
+    LTEXT           "",IDC_STATUSMESSAGE,40,7,137,36,NOT WS_VISIBLE
+    DEFPUSHBUTTON   "Закрыть",IDCANCEL,127,51,50,14
+END
+
+IDD_WAIT_DLG DIALOGEX 0, 0, 115, 26
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP
+EXSTYLE WS_EX_TOPMOST | WS_EX_TOOLWINDOW
+FONT 10, "MS Shell Dlg", 400, 0, 0xCC
+BEGIN
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,2,1,111,17
+    LTEXT           "Пожалуйста, подождите...",IDC_STATIC,10,6,96,8
+    CONTROL         "",IDC_PROGRESS_BAR,"Static",SS_GRAYRECT | WS_GROUP | WS_TABSTOP,2,19,111,7,WS_EX_STATICEDGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUT_BUGTRAP_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 266
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+        HORZGUIDE, 59
+        HORZGUIDE, 69
+    END
+
+    IDD_DESCRIBE_ERROR_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        VERTGUIDE, 63
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 189
+        HORZGUIDE, 29
+        HORZGUIDE, 166
+    END
+
+    IDD_MACHINE_INFO_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 333
+        VERTGUIDE, 12
+        VERTGUIDE, 271
+        VERTGUIDE, 276
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 253
+    END
+
+    IDD_MACHINE_STATE_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 315
+        VERTGUIDE, 12
+        VERTGUIDE, 251
+        VERTGUIDE, 257
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 215
+        HORZGUIDE, 17
+        HORZGUIDE, 97
+        HORZGUIDE, 117
+        HORZGUIDE, 209
+    END
+
+    IDD_MAIN_DLG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 354
+        VERTGUIDE, 7
+        VERTGUIDE, 14
+        VERTGUIDE, 35
+        VERTGUIDE, 133
+        VERTGUIDE, 294
+        VERTGUIDE, 302
+        VERTGUIDE, 360
+        BOTTOMMARGIN, 291
+        HORZGUIDE, 7
+        HORZGUIDE, 19
+        HORZGUIDE, 47
+        HORZGUIDE, 59
+        HORZGUIDE, 66
+    END
+
+    IDD_PREVIEW_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 339
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 208
+    END
+
+    IDD_SEND_MAIL_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        VERTGUIDE, 55
+        VERTGUIDE, 63
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 189
+        HORZGUIDE, 23
+        HORZGUIDE, 39
+        HORZGUIDE, 166
+    END
+
+    IDD_SIMPLE_DLG, DIALOG
+    BEGIN
+        VERTGUIDE, 7
+        VERTGUIDE, 35
+        VERTGUIDE, 102
+        VERTGUIDE, 284
+        VERTGUIDE, 305
+        BOTTOMMARGIN, 87
+        HORZGUIDE, 7
+        HORZGUIDE, 19
+        HORZGUIDE, 45
+        HORZGUIDE, 53
+        HORZGUIDE, 59
+    END
+
+    IDD_TRANSFERPROGRESS_PANE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 177
+        VERTGUIDE, 80
+        VERTGUIDE, 90
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 65
+        HORZGUIDE, 20
+        HORZGUIDE, 33
+    END
+
+    IDD_TRANSFERSTATUS_PANE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 177
+        VERTGUIDE, 40
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 65
+        HORZGUIDE, 43
+    END
+
+    IDD_WAIT_DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        TOPMARGIN, 1
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUT_BUGTRAP_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DESCRIBE_ERROR_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_MACHINE_INFO_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_MACHINE_STATE_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_MAIN_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PREVIEW_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SEND_MAIL_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_SIMPLE_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_TRANSFERPROGRESS_PANE AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_TRANSFERSTATUS_PANE AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_WAIT_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_BUGTRAP_NAME        "BugTrap"
+    IDS_CLOSE_TIP           "Завершить работу приложения."
+    IDS_PREVIEW_REPORT_TIP  "Посмотреть содержимое файлов отчета."
+    IDS_SAVE_REPORT_TIP     "Сохранить детализацию ошибки в файл."
+    IDS_MAILTO_TIP          "Отправить письмо в службу поддержки с коментариями."
+    IDS_SUBMIT_BUG_TIP      "Отправить автоматически сгенерированный отчет об ошибки в службу поддрержки."
+    IDS_MACHINE_INFO_TIP    "Показать информацию об операционной системе."
+    IDS_MACHINE_STATE_TIP   "Список запущенных приложений и модулей."
+    IDS_PLEASE_WAIT         "Пожалуйста, подождите..."
+    IDS_ZOOMIN              "Увеличить"
+    IDS_MORE_TIP            "Показать детальную информацию об ошибке"
+    IDS_COLUMN_ASSEMBLY     "Сборка"
+    IDS_COLUMN_METHOD       "Метод"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STATUS_REPORTSENT   "Спасибо за Ваше терпение!\nСоздание отчета завершено."
+    IDS_ERROR_TRANSFERFAILED 
+                            "Ошибка: не возможно отправить отчет об ошибке на сервер"
+    IDS_COLUMN_FUNCTION     "Function"
+    IDS_UNDEFINED_ERROR_EX  "Неопознанная ошибка (0x%08lX)"
+    IDS_ADDITIONAL_INFORMATION "\nИнформация о приложении:\n"
+    IDS_COLUMN_ADDRESS      "Адрес"
+    IDS_COLUMN_FILE         "Файл"
+    IDS_COLUMN_LINE         "Строка"
+    IDS_COLUMN_MODULE       "Модуль"
+    IDS_COLUMN_PID          "PID"
+    IDS_COLUMN_PROCESS      "Процесс"
+    IDS_COLUMN_VERSION      "Версия"
+    IDS_COLUMN_BASE         "База"
+    IDS_COLUMN_TYPE         "Тип"
+    IDS_COLUMN_SIZE         "Размер"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUT_ITEM          "О программе BugTrap..."
+    IDS_ERROR_NOT_AVAILABLE "Н/Д (ошибка)"
+    IDS_ZOOMOUT             "Уменьшить"
+    IDS_RESETSIZE           "Сбросить размер"
+    IDS_FITIMAGE            "Вписать изображение"
+    IDS_UNDEFINED_ERROR     "Неопознанная ошибка"
+END
+
+#endif    // Russian (Russia) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -754,7 +1190,7 @@ BEGIN
         LEFTMARGIN, 3
         RIGHTMARGIN, 339
         TOPMARGIN, 3
-        BOTTOMMARGIN, 210
+        BOTTOMMARGIN, 208
     END
 
     IDD_TRANSFERPROGRESS_PANE, DIALOG
@@ -795,12 +1231,23 @@ END
 
 /////////////////////////////////////////////////////////////////////////////
 //
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_PREVIEW_DLG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
 // Version
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION VER_FILE_VERSION
- PRODUCTVERSION VER_PRODUCT_VERSION
+ FILEVERSION 1,4,8,0
+ PRODUCTVERSION 1,4,8,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -818,40 +1265,40 @@ BEGIN
             VALUE "Comments", "BugTrap - Softwarefehler Berichterstattung"
             VALUE "CompanyName", "IntelleSoft"
             VALUE "FileDescription", "BugTrap dynamic link library"
-            VALUE "FileVersion", VER_FILE_VERSION_STR "\0"
+            VALUE "FileVersion", "1.4.8.0"
             VALUE "InternalName", "BugTrap"
             VALUE "LegalCopyright", "Copyright © 2005-2009 IntelleSoft"
             VALUE "OriginalFilename", "BugTrap.dll"
             VALUE "ProductName", "BugTrap"
-            VALUE "ProductVersion", VER_PRODUCT_VERSION_STR "\0"
+            VALUE "ProductVersion", "1.4.8.0"
         END
         BLOCK "040004b0"
         BEGIN
             VALUE "CompanyName", "TODO: <Company name>"
             VALUE "FileDescription", "TODO: <File description>"
-            VALUE "FileVersion", VER_FILE_VERSION_STR "\0"
+            VALUE "FileVersion", "1.4.8.0"
             VALUE "InternalName", "BugTrap.dll"
             VALUE "LegalCopyright", "Copyright (C) 2015"
             VALUE "OriginalFilename", "BugTrap.dll"
             VALUE "ProductName", "TODO: <Product name>"
-            VALUE "ProductVersion", VER_PRODUCT_VERSION_STR "\0"
+            VALUE "ProductVersion", "1.4.8.0"
         END
         BLOCK "040904b0"
         BEGIN
             VALUE "Comments", "BugTrap - software error reporting tool"
             VALUE "CompanyName", "IntelleSoft"
             VALUE "FileDescription", "BugTrap dynamic link library"
-            VALUE "FileVersion", VER_FILE_VERSION_STR "\0"
+            VALUE "FileVersion", "1.4.8.0"
             VALUE "InternalName", "BugTrap"
             VALUE "LegalCopyright", "Copyright © 2005-2009 IntelleSoft"
             VALUE "OriginalFilename", "BugTrap.dll"
             VALUE "ProductName", "BugTrap"
-            VALUE "ProductVersion", VER_PRODUCT_VERSION_STR "\0"
+            VALUE "ProductVersion", "1.4.8.0"
         END
     END
     BLOCK "VarFileInfo"
     BEGIN
-        VALUE "Translation", 0x7, 1200, 0x400, 1200, 0x409, 1200
+        VALUE "Translation", 0x7, 1200, 0x400, 1200, 0x409, 1200, 0x419, 1200
     END
 END
 
